@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {
+          background-color: #f8f9fa;
+        }
+        .navbar {
+          background-color: #343a40;
+        }
+        .navbar-brand, .nav-link {
+          color: #fff !important;
+        }
+        .navbar-toggler-icon {
+          background-color: #fff;
+        }
+        .container {
+          max-width: 800px;
+        }
+        h1 {
+          font-size: 3rem;
+          margin-top: 2rem;
+          text-align: center;
+          color: #343a40;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand fs-3" href="/">Masbro Barber Orders</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/orders">Orders</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/capsters">Capsters</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/services">Services</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Navbar -->
+
+
+    <div class="container mt-3">
+        <h2>Create New Order</h2>
+        <form action="/orders/add" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="capster_id" class="form-label">Capster</label>
+                <select class="form-select" id="capster_id" name="capster_id" required>
+                    {{range .capsters}}
+                    <option value="{{.ID}}">{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="service_id" class="form-label">Service</label>
+                <select class="form-select" id="service_id" name="service_id" required>
+                    {{range .services}}
+                    <option value="{{.ID}}">{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time" name="time" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-MCE4C3Tv/uLsnA72suUZ2Zvq2B4GqE2/qI3WEoBoF9mDQFCcWKv0GHE9OjQQb2fX" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-E
